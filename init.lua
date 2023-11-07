@@ -62,6 +62,7 @@ vim.o.signcolumn = "number"
 vim.keymap.set("i", "jj", "<Esc>l", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>bl", ":buffers<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "<leader>p", '"0p', { noremap = true, silent = true })
 
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
