@@ -131,7 +131,7 @@ return require("packer").startup(function(use)
 		"akinsho/toggleterm.nvim",
 		tag = "*",
 		config = function()
-			require("toggleterm").setup({ open_mapping = "<C-t>", direction = "float" })
+			require("toggleterm").setup({ open_mapping = "<A-t>", direction = "float" })
 		end,
 	})
 
@@ -182,7 +182,13 @@ return require("packer").startup(function(use)
 		"ibhagwan/fzf-lua",
 		requires = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			require("fzf-lua").setup({ "fzf-native" })
+			require("fzf-lua").setup({
+				fzf_colors = {
+					["bg+"] = { "bg", "CursorLine" },
+					["fg+"] = { "fg", "Normal" },
+					["gutter"] = { "bg", "Normal" },
+				},
+			})
 			vim.keymap.set("n", "<C-p>", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
 			vim.keymap.set("n", "<C-g>", "<cmd>lua require('fzf-lua').live_grep()<CR>", { silent = true })
 		end,
@@ -215,8 +221,18 @@ return require("packer").startup(function(use)
 	use({
 		"preservim/tagbar",
 		config = function()
-			vim.keymap.set("n", "<A-t>", ":TagbarToggle<CR>")
+			vim.keymap.set("n", "<C-t>", ":TagbarToggle<CR>")
 		end,
+	})
+
+	use({
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+		},
 	})
 
 	if packer_bootstrap then
