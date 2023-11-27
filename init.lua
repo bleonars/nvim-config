@@ -191,6 +191,7 @@ return require("packer").startup(function(use)
 			})
 			vim.keymap.set("n", "<C-p>", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
 			vim.keymap.set("n", "<C-g>", "<cmd>lua require('fzf-lua').live_grep()<CR>", { silent = true })
+			vim.keymap.set("n", "<C-/>", "<cmd>lua require('fzf-lua').lgrep_curbuf()<CR>", { silent = true })
 		end,
 	})
 
